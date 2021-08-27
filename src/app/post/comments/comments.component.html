@@ -1,0 +1,42 @@
+<!-- Comments component -->
+<ng-container *ngIf="post?.id">
+
+  <!-- COmments count for single post -->
+  <ng-container *ngFor="let count of commentsCount">
+    <p *ngIf="post?.id === count.id" class="fw-bold">Total Comments: {{count.comments.length }}</p>
+  </ng-container>
+
+<!-- User comments -->
+<div class="comments-block pe-3" *ngIf="commentsList.length > 0">
+    
+    <ng-container *ngFor="let comment of commentsList;let i = index">
+      
+        <div class="d-flex align-items-center" [class.border-top]=" i > 0">
+          <figure class="flex-grow-1 mb-0 py-3">
+            <blockquote class="blockquote">
+              <p>{{comment.commentText}}</p>
+            </blockquote>
+            <figcaption class="blockquote-footer mb-0">
+             <cite title="Source Title">{{comment.user?.username}}</cite>             
+            </figcaption>
+            
+          </figure>
+
+          <div class="comment-footer">
+            <button class="btn action-btn p-0" (click)="edit(comment);"><i class="fas fa-pen"></i></button>                
+            <button class="btn action-btn p-0 ms-3" (click)="delete(comment)"><i class="fas fa-trash"></i></button>
+        </div>
+        </div>
+          
+        
+    </ng-container>
+  </div>
+<!-- Add comments textbox -->
+<div class="d-flex mb-3 comment-box" >
+  <input type="text" class="form-control" name="commentText" [(ngModel)]="model.commentText" placeholder="Leave Comment" aria-label="Recipient's username" aria-describedby="button-addon2">
+  <button *ngIf="!editable" class="btn btn-primary ms-2" (click)="addComment()" [disabled]="model.commentText.length === 0" type="button" id="button-addon2"> ADD</button>
+  <button *ngIf="editable" class="btn btn-primary ms-2" (click)="updateComment(model.commentText)" type="button" id="button-addon2">SAVE</button>
+  <button *ngIf="editable" class="btn btn-outline-primary ms-2" (click)="cancel()" type="button" id="button-addon2">CANCEL</button>
+</div>
+</ng-container>
+

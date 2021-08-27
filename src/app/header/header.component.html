@@ -1,0 +1,29 @@
+<!-- Navbar -->
+<nav class="navbar navbar-expand-xl fixed-top navbar-dark " [class.sticky] = "sticky" #stickyMenu>
+    <div class="container-fluid">
+      <button class="navbar-toggler" (click)="toggleSidebar(true)" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars"></i>
+        <i class="fas fa-times"></i>
+      </button>
+      
+      <div class="ms-auto d-flex align-items-center" >
+
+        <!-- Login link When User not logged in-->
+        <a routerLink="login" class="text-decoration-none ms-2 flex-grow-1" *ngIf="!showProfile">
+          <i class="fas fa-user-circle"></i> 
+          Login
+        </a>
+
+        <!-- Profile with Username When logged in-->
+        <ng-container *ngIf="showProfile">
+          <a routerLink="/post/my-posts" class="text-decoration-none ms-2 flex-grow-1 text-capitalize user-profile">
+            <i class="fas fa-user-circle"></i> 
+            {{currentUser.user.username}}
+          </a>
+          
+          <button class="btn text-white flex-grow-1" type="button" (click)="logout()"><i class="fas fa-power-off"></i></button>
+        </ng-container>
+        
+      </div>
+    </div>
+  </nav>

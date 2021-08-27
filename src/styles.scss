@@ -1,1 +1,254 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import './assets/scss/variables';
+
+$input-box-shadow: none;
+$input-focus-box-shadow: none;
+// $input-btn-focus-box-shadow: none;
+// $input-btn-active-box-shadow: none;
+
+$btn-box-shadow:none;
+$btn-focus-box-shadow:none;
+$btn-active-box-shadow:none;
+
+// Required scss files to customize bootstrap
+@import "../node_modules/bootstrap/scss/bootstrap";
+@import "../node_modules/bootstrap/scss/functions";
+@import "../node_modules/bootstrap/scss/variables";
+@import "../node_modules/bootstrap/scss/mixins";
+@import "../node_modules/bootstrap/scss/root";
+
+
+
+
+
+html,body{
+    width: 100%;
+    height: 100%;
+}
+body{
+    background: $bodyClr;
+}
+
+// Common Styles 
+.background-block{
+    background-color: $greenbg;
+    height: 200px;
+}
+.minus-top{
+    margin-top: -130px;
+}
+
+.main-panel{
+    width: calc(100% - 260px);
+    margin-left: auto;
+    transition: width 0.4s ease-in-out;
+}
+.content-wrapper{
+    width: 100%;
+    height: 100vh;
+    position: relative;
+}
+
+.main-content{
+    padding: 50px;
+}
+.card{
+    box-shadow: 0 1px 15px 1px rgba($black, 5%);
+    border:0;
+}
+//Header css
+.navbar{
+    .fa-bars{
+        display: none;
+    }
+    width: calc(100% - 260px);
+    margin-left: auto;
+    background-color: transparent;
+    transition: 0.2s ease-in-out;
+    .user-profile{
+        background: $white;
+        padding: 6px 15px;
+        border-radius: 30px;
+    }
+    &.sticky{
+        background-color: $greenbg;
+        box-shadow: 0 1px 15px  rgba($black, 5%);
+    }
+}
+.sidebar-closed{
+    .navbar{
+        .fa-times{
+            display: none;
+        }
+        .fa-bars{
+            display: block;
+        }
+    }
+}
+
+//Sidebar Css
+.sidebar {
+    position: fixed;
+    top: 0;
+    height: 100%;
+    bottom: 0;
+    width: 260px;
+    left: 0;
+    z-index: 1030;
+    background: $primary;
+    transition: left 0.4s ease-in-out;
+    box-shadow: 0 2px 22px 0 rgba($black, 20%);
+}
+
+.invalid-control .invalid-feedback{
+    display: block;
+}
+
+
+// Common Button css
+.btn{
+    &.action-btn{
+        &:hover{
+            color: $primary;
+        }
+    }
+}
+.btn-primary{
+    color: $white;
+    &:hover,&:focus,&:active,&.active,&.disabled,&:disabled{
+        color: $white;
+        box-shadow: none;
+    }
+}
+.btn-outline-primary{
+    &:hover,&:active{
+        color: $white;
+    }
+}
+
+
+
+//Page Not Found Component
+.page-notfound{
+    height: 100vh;
+    .far{
+        font-size: $font80;
+    }
+}
+
+//Loader
+.loader{
+    position: fixed;
+    width: 100%;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    background: rgb(255 255 255 / 75%);
+    z-index: 9999;
+}
+
+// Login component
+.login-block{
+
+    max-width: 500px;
+    margin: 0 auto;
+    
+    
+    &:after{
+        content: '';
+        position: absolute;
+        background-color: $primary;
+        top: 0;
+        width: 100%;
+        left: 0;
+        right: 0;
+        height: 50%;
+    }
+    .card-body{
+        background-color: $white;
+        z-index: 9;
+    }
+
+    .title{
+        z-index: 9;
+        position: relative;
+        text-align: center;
+        font-weight: 400;
+        font-size: $font36;
+        margin-top: 50px;
+        margin-bottom: 0;
+    }
+}
+
+
+//Add Post Component
+.fixed-form-block{
+    max-width: 600px;
+    .btn{
+        width: 50%;
+    }
+}
+//Post List component
+.post-list{
+    max-height: 400px;
+    overflow-y: auto;
+}
+.post-block{
+    border-left: 6px solid $primary !important;
+}
+
+
+// Media Query
+
+@media(max-width:1199px){
+    .sidebar-closed .main-panel,
+    .sidebar-closed .navbar{
+        width: 100%;
+    }
+    .sidebar-closed .sidebar{
+        left: -260px;
+    }
+}
+
+@media(max-width:991px){
+    .main-panel{
+        width: 100%;
+    }
+}
+
+
+@media(max-width:767px){
+    .navbar,
+    .sidebar{
+        width: 100%;
+    }
+    .sidebar-closed{
+        .sidebar {
+            left: 0;
+            opacity: 0;
+            visibility: hidden;
+            #sidebar-wrapper{
+                transform: translate(-260px, 0);
+            } 
+            
+        }
+    }
+    .sidebar{
+        background-color: rgba($black, 20%); 
+        transition: opacity 0.2s ease-in-out;
+        #sidebar-wrapper{
+            transition: transform 0.2s ease-in-out;
+            background-color: $primary;
+            height: 100vh;
+        }     
+    }
+    .main-content {
+        padding: 15px;
+    }
+    .users-table{
+        td{
+            white-space: nowrap;
+        }
+    }
+}

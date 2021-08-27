@@ -1,0 +1,24 @@
+<!-- Sidebar -->
+<div class="sidebar">
+    <div class="sidebar-wrapper" id="sidebar-wrapper">
+        <button class="btn btn-outline text-white d-block ms-auto d-md-none" (click)="toggleSidebar(true)" type="button" >
+            <i class="fas fa-times"></i> Close
+          </button>
+        <!-- Routes -->
+        <ul class="nav flex-column">
+            <li *ngFor="let menu of sidebarMenu">
+                <a [routerLink]="menu.path" routerLinkActive="active">
+
+                    <!-- Icons based on Page Type -->
+                    <ng-container [ngSwitch]="menu.icon">
+                        <i class="fas fa-user" *ngSwitchCase="'user'"></i>
+                        <i class="fas fa-list" *ngSwitchCase="'post'"></i>
+                    </ng-container>
+                    
+                    <span>{{menu.name}}</span>
+                </a>
+            </li>
+        </ul>
+        
+    </div>
+</div>

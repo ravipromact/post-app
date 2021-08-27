@@ -1,0 +1,26 @@
+<div class="card flex-grow-1 fixed-form-block mx-auto">
+  <div class="card-body p-4">
+    <!-- Page tile -->
+      <h5 class="card-title text-center display-6">ADD POST</h5>
+      <!-- Post Form -->
+      <form [formGroup]="postForm" (ngSubmit)="uploadFiles()">
+          <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+              <textarea id="description" class="form-control" rows="4" placeholder="Description" formControlName="description"  required></textarea>
+          </div>
+          <div class="mb-3">
+            <label >
+              <input type="file" multiple (change)="selectFiles($event)" />
+            </label>
+          </div>
+          <div class="d-flex">
+            <button type="submit" class="btn btn-primary flex-grow-1 me-1" [disabled]="!postForm.valid">ADD</button>
+            <button type="button" class="btn btn-outline-primary flex-grow-1 ms-1" routerLink="/post">CANCEL</button>
+          </div>
+      </form>
+
+      <!-- <p>{{uploadSuccess? 'uploaded':'uploading'}}</p> -->
+      
+
+  </div>
+</div>

@@ -1,0 +1,43 @@
+<!-- Post details page -->
+<div *ngIf="post"> 
+<!-- Post description -->
+  <div  class=" p-3 border rounded-3 mb-3" >
+    <p class="mb-0" *ngIf="!editable">{{model.description}}</p>
+    
+    <!-- Single image -->
+    <ng-container *ngIf="postDetails.media.length === 1">
+      <ng-container *ngFor="let media of postDetails.media">
+        <img src="https://strapi-test.promactinfo.com{{media.formats.small.url}}" class="d-block w-100 rounded-3 mt-4" alt="post image">
+      </ng-container>
+    </ng-container>
+
+    <!-- Slider for multiple images -->
+    <div id="carouselExampleIndicators" class="carousel slide mt-4" data-bs-ride="carousel" *ngIf="postDetails.media.length > 1">
+      <div class="carousel-indicators">
+        <button type="button" *ngFor="let media of postDetails.media;let i = index" data-bs-target="#carouselExampleIndicators" attr.data-bs-slide-to="{{i}}" [class.active]="i == 0" aria-current="true" attr.aria-label="Slide {{i}}"></button>      
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item" [class.active]="i == 0"  *ngFor="let media of postDetails.media;let i = index">
+          <img src="https://strapi-test.promactinfo.com{{media.formats.small.url}}" class="d-block w-100 rounded-3" alt="slide {{i + 1}}">
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+
+  </div>
+
+ 
+
+ 
+<!-- Comment component -->
+  <app-comments [post]="postDetails"></app-comments>
+</div>
+
+  

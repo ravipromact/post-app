@@ -1,0 +1,16 @@
+<!-- Edit Post page -->
+<div class="card flex-grow-1 post-form-block mx-auto">
+    <div class="card-body">
+        <!-- Page Title -->
+        <!-- <h1 class="display-4">Edit Post</h1> -->
+        <!-- Description -->
+        <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <textarea id="description" class="form-control" rows="4" placeholder="Description" [(ngModel)]="model.description"  required></textarea>
+        </div>
+        <div class="d-flex">
+            <button type="button" class="btn btn-primary flex-grow-1 me-1" [disabled]="!model.description" (click)="updatePost()">Save</button>
+            <button type="button" class="btn btn-light flex-grow-1 ms-1" routerLink="/post/my-posts">Cancel</button>
+        </div>
+    </div>
+</div>

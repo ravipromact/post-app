@@ -1,0 +1,53 @@
+<!-- Add user page -->
+<div class="card fixed-form-block mx-auto" >
+    <div class="card-body">
+      <!-- Page title -->
+      <h5 class="card-title text-center display-6">ADD USER</h5>
+
+      <!-- Add user Form -->
+      <form [formGroup]="userForm" (ngSubmit)="addUser()">
+        <div class="row g-3">
+
+          <!-- Username -->
+            <div class="col-md-12" >
+              <label for="username" class="form-label">User Name *</label>
+              <input type="text" class="form-control" formControlName="username" id="username" required [ngClass]="{ 'is-invalid': f.username.errors && (f.username.dirty || f.username.touched) }">
+              <span class="invalid-feedback" *ngIf="f.username.errors && (f.username.dirty || f.username.touched)">
+                  username is required
+              </span>
+            </div>
+            <!-- Email -->
+            <div class="col-md-12">
+              <label for="email" class="form-label">Email *</label>
+              <input type="email" class="form-control" formControlName="email" id="email" required [ngClass]="{ 'is-invalid': f.email.errors && (f.email.dirty || f.email.touched) }">
+              <span class="invalid-feedback" *ngIf="f.email.dirty || f.email.touched">
+                  <ng-container *ngIf="f.email.errors?.email">
+                      Please enter valid email address
+                  </ng-container>
+                  <ng-container *ngIf="f.email.errors?.required">
+                      Email is required
+                  </ng-container>
+              </span>
+            </div>
+            <!-- Password -->
+             <div class="col-md-12">
+                <label for="password" class="form-label">Password *</label>
+                <input type="password" class="form-control" formControlName="password" id="password" required [ngClass]="{ 'is-invalid': f.password.errors && (f.password.dirty || f.password.touched) }">
+                <span class="invalid-feedback" *ngIf="f.password.dirty || f.password.touched">
+                    <ng-container *ngIf="f.password.errors?.minlength">
+                        Password is required min length 6
+                    </ng-container>
+                    <ng-container *ngIf="f.password.errors?.required">
+                        Password is required
+                    </ng-container>
+                </span>
+              </div>  
+        </div>
+       <!-- Buttons -->
+        <div class="col-12 mt-4 d-flex">
+          <button type="submit" class="btn btn-primary " [disabled]="!userForm.valid">Add</button>
+          <button type="button" class="btn btn-light ms-3" routerLink="/user">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>

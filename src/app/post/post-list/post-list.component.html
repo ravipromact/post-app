@@ -1,0 +1,37 @@
+<!-- Post list page -->
+<!-- <div class="text-end mb-3">
+    <a class="btn btn-light" (click)="addPost()" ><i class="fas fa-plus"></i> Add Post</a>
+</div> -->
+
+    
+    <div class="card">
+        <div class="card-body">
+            <div class="d-flex mb-3 align-items-center">
+                <h2 class="mb-0 display-6">All Posts</h2>
+                <button class="btn btn-primary ms-auto d-block" (click)="addPost()"><i class="fas fa-plus"></i> Add Post</button>
+            </div>
+            <ng-container  *ngIf="posts.length > 0">
+                <div class="d-md-flex align-items-start">
+                    <div class="nav flex-column nav-pills me-3" role="tablist" aria-orientation="vertical">
+                        <a class="nav-link" [routerLink]="[post.id]" [routerLinkActive]="'active'" *ngFor="let post of posts; let i = index">
+                            Post {{i+1}}
+                            <span class="float-end">{{commentCount[i]}} <i class="fas fa-comment-dots"></i></span>
+                        </a>
+                    </div>
+                    <div class="tab-content flex-grow-1" id="v-pills-tabContent">
+                        <router-outlet></router-outlet>
+                    </div>
+                </div>
+            </ng-container>
+
+            <ng-container *ngIf="posts?.length === 0">
+                <h2 class="display-6 text-center">No Posts to display</h2>
+            </ng-container>
+
+        </div>
+        
+    </div>
+
+
+
+

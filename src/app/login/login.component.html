@@ -1,0 +1,47 @@
+<!-- Login Page -->
+<div class="login-section h-100 d-flex align-items-center">
+    
+    <div class="login-block position-relative flex-grow-1 rounded overflow-hidden">
+        <!-- Page Title -->
+        <h1 class="title text-white">LOGIN</h1>
+        <div class="card flex-grow-1 p-3 pb-5 p-sm-5">
+            <div class="card-body shadow-sm rounded p-4">
+                
+                
+                <!-- Login Form -->
+                <form #loginForm="ngForm" (ngSubmit)="loginUser(login.email,login.password)">
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" id="email" class="form-control" name="email" [(ngModel)]="login.email" #email="ngModel" required [class.is-invalid]="(email.touched || email.dirty) && email.errors" email>
+                        <span class="invalid-feedback" *ngIf="email.touched || email.dirty">
+                            <ng-container *ngIf="email.errors?.required">
+                                Email is required
+                            </ng-container>
+                            <ng-container *ngIf="email.errors?.email">
+                                Email is invalid
+                            </ng-container>
+                        </span>
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" id="password" class="form-control" name="password" [(ngModel)]="login.password" #password="ngModel" required [class.is-invalid]="(password.touched || password.dirty) && password.errors">
+                        <span class="invalid-feedback" *ngIf="password.touched || password.dirty">
+                            <ng-container *ngIf="password.errors?.required">
+                                Password is required
+                            </ng-container>
+                            <ng-container *ngIf="password.errors?.minlength">
+                                Password should be minimum of 6 characters
+                            </ng-container>
+                        </span>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100 mt-1 text-uppercase" [disabled]="!loginForm.valid">Login</button>
+                    <p class="mb-0 text-center mt-3">New user? <a routerLink="/register">Register</a></p>
+                </form>
+            </div>
+        </div>
+        
+    </div>
+
+<!-- Toaster -->
+<app-toaster></app-toaster>
+</div>

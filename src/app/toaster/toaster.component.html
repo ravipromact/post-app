@@ -1,0 +1,32 @@
+<!-- Toaster for Success/Failure Request-->
+<ng-container >
+    <div @toasterAnimation 
+    *ngIf="showToaster"
+     class="alert alert-dismissible fade show mb-0" 
+    [ngClass]="{
+        'alert-info': responseType === 'info',
+        'alert-success': responseType === 'success',
+        'alert-danger': responseType === 'failed'
+    }" >
+        <div class="d-flex align-items-baseline">
+            <i *ngIf="responseType === 'success'" class="fas fa-check-circle"></i>
+            <i *ngIf="responseType === 'failed'" class="fas fa-exclamation-circle"></i>
+            <i *ngIf="responseType === 'info' " class="fas fa-exclamation-triangle"></i>
+            <p class="mb-0 ms-2">{{toasterMessage}}</p>
+        </div>
+        <button type="button" class="btn-close"  aria-label="Close" (click)="clearToaster()"></button>
+    </div>
+</ng-container>
+
+<!-- Info Toaster -->
+<!-- <ng-container *ngIf="responseType === 'info' ">
+    <div @toasterAnimation *ngIf="showToaster" class="alert alert-info d-flex align-items-center" role="alert">
+        <i  class="fas fa-exclamation-triangle"></i>
+        <p class="mb-0 ms-2">{{toasterMessage}}</p>
+        <button type="button" class="btn-close ms-auto"  aria-label="Close" (click)="clearToaster()"></button>
+    </div>
+</ng-container> -->
+
+
+
+

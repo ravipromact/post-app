@@ -1,0 +1,15 @@
+@import '_variables';
+
+.blockquote{
+    p{
+        font-size: $font14;
+    }
+}
+.comments-block{
+    max-height: 250px;
+    overflow-y: auto;
+    margin-bottom: 20px;
+}
+.comment-box{
+    .btn{width:100px}
+}

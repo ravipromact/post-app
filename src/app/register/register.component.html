@@ -1,0 +1,61 @@
+<!-- Register Page -->
+
+<div class="login-section h-100 d-flex align-items-center">
+    
+    <div class="login-block position-relative flex-grow-1 rounded overflow-hidden">
+        <!-- Page Title -->
+        <h1 class="title text-white">REGISTER</h1>
+        <div class="card flex-grow-1 p-3 pb-5 p-sm-5">
+            <div class="card-body shadow-sm rounded p-4">
+                
+                <!-- Register form -->
+            
+                <form #registerFrom="ngForm" (ngSubmit)="save(registerFrom.value)">
+                    <div class="mb-3">
+                      <label for="Username" class="form-label">Username</label>
+                      <input type="text" name="username" class="form-control" id="Username" [(ngModel)]="register.username" required [class.is-invalid]="(name.touched || name.dirty) && name.errors" #name="ngModel">
+                
+                        <span class="invalid-feedback" *ngIf="(name.touched || name.dirty) && name.errors">
+                            Username is required
+                        </span>
+                
+                    </div>
+                    <div class="mb-3">
+                      <label for="email" class="form-label">Email</label>
+                      <input type="email" class="form-control" id="email" name="email" [(ngModel)]="register.email" required [class.is-invalid]="(email.touched || email.dirty) && email.errors" #email="ngModel" email>
+                
+                        <span class="invalid-feedback" *ngIf="email.touched || email.dirty">
+                            <ng-container *ngIf="email.errors?.required">
+                                Email is required
+                            </ng-container>
+                            <ng-container *ngIf="email.errors?.email">
+                                Email is invalid
+                            </ng-container>
+                        </span>
+                
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="password" name="password" [(ngModel)]="register.password" required [class.is-invalid]="(password.touched || password.dirty) && password.errors" #password="ngModel" minlength="6">
+                        <span class="invalid-feedback" *ngIf="password.touched || password.dirty">
+                            <ng-container *ngIf="password.errors?.required">
+                                Password is required
+                            </ng-container>
+                            <ng-container *ngIf="password.errors?.minlength">
+                                Password should be minimum of 6 characters
+                            </ng-container>
+                        </span>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100 text-uppercase" [disabled]="!registerFrom.valid">Register</button>
+                    <p class="mb-0 text-center mt-3">Already have an account? <a routerLink="/login">Login</a></p>
+                  </form>
+           
+               
+            </div>
+        </div>
+        
+    </div>
+
+<!-- Toaster -->
+<app-toaster></app-toaster>
+</div>

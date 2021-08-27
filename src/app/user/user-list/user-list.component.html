@@ -1,0 +1,29 @@
+<!-- User list Page -->
+<div class="card">
+    <div class="card-body">
+        <a  class="btn btn-primary mb-3" [routerLink]="['add']">Add New User</a>
+        <div class="table-responsive">
+            <table class="table mb-0 table-borderless users-table">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Username</th>
+                    <th scope="col">Email</th>
+                    <th scope="col" class="text-center">Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let user of users; let i = index">
+                    <th scope="row">{{i + 1}}</th>
+                    <td>{{user.username}}</td>
+                    <td>{{user.email}}</td>
+                    <td  class="text-center">
+                        <a class="btn action-btn" routerLink="edit/{{user.id}}"><i class="fas fa-pen"></i></a>
+                        <button class="btn action-btn" (click)="promptUser(user)"><i class="fas fa-trash" ></i></button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

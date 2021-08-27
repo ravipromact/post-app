@@ -1,0 +1,9 @@
+//Component styles
+.nav-pills .nav-link {
+    width: 180px;
+    margin-bottom: 10px;
+    &:not(.active){
+        background: #f8f8f8;
+    }
+}
+
