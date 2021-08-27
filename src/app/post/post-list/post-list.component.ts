@@ -35,9 +35,8 @@ export class PostListComponent implements OnInit {
 
   ngOnInit(): void {
     this.postService.getPosts().subscribe((posts:any) => {
-      this.posts = posts;
+      this.posts = posts.sort((a:any, b:any) => b.id - a.id);
       if(this.posts.length !== 0){
-        //console.log(this.posts[0].id)
         this.router.navigate([`${this.posts[0].id}`],{relativeTo:this.route})
       }
      

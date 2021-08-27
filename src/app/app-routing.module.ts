@@ -13,12 +13,6 @@ import { UserListComponent } from './user/user-list/user-list.component';
 import { UserComponent } from './user/user.component';
 
 const routes: Routes = [
-  // {
-  //   path:'register', component:NouserLayoutComponent,canActivate:[LoggedInGuard]
-  // },
-  // {
-  //   path:'login', component:LoginComponent,canActivate:[LoggedInGuard]
-  // },
   {
     path: '',
     component: NouserLayoutComponent,

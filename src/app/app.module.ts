@@ -13,7 +13,6 @@ import { AddUserComponent } from './user/add-user/add-user.component';
 import { EditUserComponent } from './user/edit-user/edit-user.component';
 import { UserListComponent } from './user/user-list/user-list.component';
 
-import { PostModule } from './post/post.module';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { ToasterModule } from './toaster/toaster.module';
@@ -22,6 +21,7 @@ import { LoaderModule } from './loader/loader.module';
 import { PageNotfoundComponent } from './page-notfound/page-notfound.component';
 import { LayoutComponent } from './layout/layout.component';
 import { NouserLayoutComponent } from './layout/nouser-layout/nouser-layout.component';
+
 
 @NgModule({
   declarations: [

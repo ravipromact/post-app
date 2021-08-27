@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AppService } from 'src/app/shared/app.service';
 import { UserService } from '../user.service';
 
@@ -11,7 +11,8 @@ export class UserListComponent implements OnInit {
 
   constructor(private userService:UserService,
     private router:Router,
-    private appService:AppService) { }
+    private appService:AppService,
+    private route:ActivatedRoute) { }
   users!:any[];
 
   loggedInUser:any;
@@ -54,12 +55,10 @@ export class UserListComponent implements OnInit {
     
     this.userService.getUsers().subscribe((users) => {
       if(users){
-       
-        this.users = users;
-        this.appService.enableLoader(false);
+        this.users = users.sort((a:any, b:any) => a.id - b.id);
       }
     });
-  
+
     this.userService.currentUser.subscribe((user:any)=>{
       this.loggedInUser = user;
     })

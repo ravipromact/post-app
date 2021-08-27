@@ -29,19 +29,35 @@ export class PostDetailComponent implements OnInit {
   
   //Method to get post by id
   getPost(){
-    this.route.paramMap.subscribe(param =>{
-      const id = +param.get('id')!;
-      this.postService.getSinglePost(id).subscribe((post) => {
-        if(post){
-          this.postDetails = post;
-          this.model.id = this.postDetails.id;
-          this.model.description = this.postDetails.description;
-          this.commenCount = this.postDetails.comments.length;
-          this.post = true;
-          this.appService.clearToaster();
-        }
-      });
+    // this.route.paramMap.subscribe(param =>{
+    //   const id = +param.get('id')!;
+    //   this.postService.getSinglePost(id).subscribe((post) => {
+    //     if(post){
+    //       this.postDetails = post;
+    //       this.model.id = this.postDetails.id;
+    //       this.model.description = this.postDetails.description;
+    //       this.commenCount = this.postDetails.comments.length;
+    //       this.post = true;
+    //       this.appService.clearToaster();
+    //     }
+    //   });
+    // })
+    this.route.data.subscribe(data=>{
+      this.postDetails = data.resolvedPost;
+      this.model.id = this.postDetails.id;
+      this.model.description = this.postDetails.description;
+      this.commenCount = this.postDetails.comments.length;
+      this.post = true;
+      this.appService.clearToaster();
     })
+    // this.postDetails = this.route.snapshot.data['resolvedPost'];
+    // this.model.id = this.postDetails.id;
+    // this.model.description = this.postDetails.description;
+    // this.commenCount = this.postDetails.comments.length;
+    // this.post = true;
+    // this.appService.clearToaster();
+
+
   }
   
   

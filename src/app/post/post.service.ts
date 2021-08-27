@@ -49,7 +49,9 @@ export class PostService {
   //Get Post by Id
   getSinglePost(id:number):Observable<any>{
     return this.http.get<any>(`${this.postsApi}/${id}`).pipe(
-      tap((post) => console.log(`fetched post by id: ${id}`)),
+      tap((post) => {
+        console.log(`fetched post by id: ${id}`)
+      }),
       catchError(this.appService.handleError(`No post found with id ${id}`))
     );
   }

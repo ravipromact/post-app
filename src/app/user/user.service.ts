@@ -97,10 +97,6 @@ export class UserService {
         if(user == null){
           console.log(`get user w/ id=${user}`)
          
-
-          // this.appService.responseMessage('failed')
-          // this.appService.changeToaster(true);
-          //this.appService.toasterMessage(`User not exist`);
           this.appService.enableToaster('failed','User not exist')
           
         }
@@ -113,9 +109,6 @@ export class UserService {
   updateUser(userData:any):Observable<any>{
     return this.http.put<any>(`${this.usersApi}/${userData.id}`,userData).pipe(
       tap(()=> {
-        // this.appService.responseMessage('success')
-        // this.appService.changeToaster(true);
-        // this.appService.toasterMessage(`User updated Successfully`);
         this.appService.enableToaster('success','User updated Successfully')
       }),
       catchError(this.appService.handleError('Username or Email already exist'))

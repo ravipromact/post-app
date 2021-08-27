@@ -4,6 +4,7 @@ import { AddPostComponent } from './add-post/add-post.component';
 import { EditPostComponent } from './edit-post/edit-post.component';
 import { MyPostComponent } from './my-post/my-post.component';
 import { PostDetailComponent } from './post-detail/post-detail.component';
+import { PostDetailResolver } from './post-detail/post-detail.resolver';
 import { PostListComponent } from './post-list/post-list.component';
 import { PostComponent } from './post.component';
 
@@ -16,7 +17,7 @@ const routes: Routes = [
       {
         path:'', component:PostListComponent,
         children:[
-          {path:':id', component:PostDetailComponent}
+          {path:':id', component:PostDetailComponent,resolve:{resolvedPost:PostDetailResolver}}
         ]
       }
   ]}
